@@ -1,11 +1,11 @@
 {
     "Save Players Weapons": false,
     "Database Connection": {
-        "Host": "database",
+        "Host": "",
         "Port": 3306,
-        "User": "mysql",
-        "Database": "cs2-deathmatch-database",
-        "Password": "itslocalanywaylol"
+        "User": "",
+        "Database": "",
+        "Password": ""
     },
     "Gameplay Settings": {
         "Free For All": true,
