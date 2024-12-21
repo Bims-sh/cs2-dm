@@ -79,17 +79,17 @@ jobs:
           latest_tag=$(curl --silent \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/${{ github.repository }}/tags" | jq -r '.[0].name')
+          if [ -z "$latest_tag" ]; then
+            latest_tag=1
+          else
+            latest_tag=$((latest_tag + 1))
+          fi
           echo "Latest tag is: $latest_tag"
-
-      - name: 'Get next minor version'
-        id: semvers
-        uses: "WyriHaximus/github-action-next-semvers@v1"
-        with:
-          version: ${{ steps.tag.outputs.tag }}
+          echo "tag=$latest_tag" >> $GITHUB_ENV
 
       - name: GH Release
         uses: softprops/action-gh-release@v2.1.0
         with:
           files: "server_files/package.tar.gz"
-          token: ${{ secrets.TOKEN }}
-          tag_name: "${{ steps.semvers.outputs.v_patch }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: "${{ steps.tag.outputs.tag }}"
