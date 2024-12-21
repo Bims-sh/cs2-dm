@@ -28,4 +28,5 @@ docker compose up -d
 - [LordFetznschaedl/CS2Rcon](https://github.com/LordFetznschaedl/CS2Rcon)
 - [kus/CS2-Remove-Map-Weapons](https://github.com/kus/CS2-Remove-Map-Weapons)
 - [NockyCZ/CS2-Deathmatch](https://github.com/NockyCZ/CS2-Deathmatch)
+- [Source2ZE/ServerListPlayersFix](https://github.com/Source2ZE/ServerListPlayersFix)
 - [ghostcap-gaming/ACMRS-cs2-metamod-update-fix](https://github.com/ghostcap-gaming/ACMRS-cs2-metamod-update-fix)

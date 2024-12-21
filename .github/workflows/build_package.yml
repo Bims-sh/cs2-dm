@@ -60,6 +60,24 @@ jobs:
           curl -L -o "${FILE_NAME}" "https://github.com/NockyCZ/CS2-Deathmatch/releases/download/$(curl -s https://api.github.com/repos/NockyCZ/CS2-Deathmatch/releases/latest | jq -r .tag_name)/${FILE_NAME}"
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
+      
+      - name: Get latest release from Source2ZE/ServerListPlayersFix
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/Source2ZE/ServerListPlayersFix/releases/latest | jq -r ".assets[] | select(.name | test(\"Linux.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/Source2ZE/ServerListPlayersFix/releases/download/$(curl -s https://api.github.com/repos/Source2ZE/ServerListPlayersFix/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get latest release from partiusfabaa/cs2-advertisement
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/partiusfabaa/cs2-advertisement/releases/latest | jq -r ".assets[] | select(.name | test(\"Advertisement.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/partiusfabaa/cs2-advertisement/releases/download/$(curl -s https://api.github.com/repos/partiusfabaa/cs2-advertisement/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
 
       - name: Get and extract MMS source tar file
         run: |

@@ -45,6 +45,15 @@
     },
     "Players Gameplay Settings": {
         "VIP Flag": "@css/vip",
+        "VIP Players": {
+            "Respawn Time": 0.75,
+            "Spawn Protection Time": 1,
+            "Reffil Ammo Kill": true,
+            "Reffil Ammo Headshot": false,
+            "Reffil Ammo in All Weapons": false,
+            "Reffil Health Kill": 40,
+            "Reffil Health Headshot": 10
+        },
         "Non VIP Players": {
             "Respawn Time": 0.75,
             "Spawn Protection Time": 1,

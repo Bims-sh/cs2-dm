@@ -7,7 +7,7 @@ services:
     environment:
       # Server configuration
       - STEAMAPPVALIDATE=0           # (0 - no validation, 1 - enable validation)
-      - CS2_SERVERNAME=CS2 DM | FFA (Mirage) — bims.sh (24 Players)
+      - CS2_SERVERNAME=CS2 DM | FFA (Mirage) [AK-47/Deagle] — bims.sh (24 Players)
       - CS2_PORT=27015               # (CS2 server listen port tcp_udp)
       - CS2_LAN=0                    # (0 - LAN mode disabled, 1 - LAN Mode enabled)
       - CS2_MAXPLAYERS=24            # (Max players)
@@ -19,6 +19,10 @@ services:
       - CS2_GAMEMODE=2              # (Used if CS2_GAMEALIAS not defined. See https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers)
       - CS2_MAPGROUP=mg_dm          # (Map pool. Ignored if Workshop maps are defined.)
       - CS2_STARTMAP=de_mirage      # (Start map. Ignored if Workshop maps are defined.)
+      # Bots
+      - CS2_BOT_DIFFICULTY          # (0 - easy, 1 - normal, 2 - hard, 3 - expert)
+      - CS2_BOT_QUOTA=10            # (Number of bots)
+      - CS2_BOT_QUOTA_MODE=fill     # (fill, competitive)
       # Logs
       - CS2_LOG=on                  # 'on'/'off'
     env_file: ".env"
