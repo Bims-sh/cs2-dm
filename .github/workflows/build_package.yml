@@ -73,24 +73,21 @@ jobs:
           cd $GITHUB_WORKSPACE
           tar -cvf package.tar.gz server_files/
 
-      - name: Get previous tag
+      - name: 'Get Previous tag'
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
-          fallback: 1
+          fallback: 1.0.0
 
-      - name: Get next tag
-        id: get_next_tag
-        run: |
-          LAST_TAG=${{ steps.previoustag.outputs.tag }}
-          NEXT_NUMBER=$((LAST_TAG % 100))
-          NEXT_TAG=$((LAST_TAG + 1))
-
-          echo "NEXT_TAG=${NEXT_TAG}" >> $GITHUB_ENV
+      - name: 'Get next minor version'
+        id: semvers
+        uses: "WyriHaximus/github-action-next-semvers@v1"
+        with:
+          version: ${{ steps.previoustag.outputs.tag }}
 
       - name: GH Release
         uses: softprops/action-gh-release@v2.1.0
         with:
           files: "package.tar.gz"
           token: ${{ secrets.TOKEN }}
-          tag_name: "v${{env.NEXT_TAG}}"
+          tag_name: "${{ steps.semvers.outputs.patch }}"
