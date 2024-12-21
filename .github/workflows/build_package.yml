@@ -1,0 +1,92 @@
+name: Build Deathmatch Server Package
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  download_and_extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set MMS version variable
+        id: mms_version
+        run: |
+          echo "MMS_VERSION=1315" >> $GITHUB_ENV
+          echo "MMS_VERSION=${{ env.MMS_VERSION }}"
+
+      - name: Get latest release from roflmuffin/CounterStrikeSharp
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest | jq -r ".assets[] | select(.name | test(\"counterstrikesharp-with-runtime-build.*-linux.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/server_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/roflmuffin/CounterStrikeSharp/releases/download/$(curl -s https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get latest release from LordFetznschaedl/CS2Rcon
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/LordFetznschaedl/CS2Rcon/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2Rcon-.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/server_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/LordFetznschaedl/CS2Rcon/releases/download/$(curl -s https://api.github.com/repos/LordFetznschaedl/CS2Rcon/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+          VERSIONED_DIR=$(ls -d CS2Rcon-* | head -n 1)
+          mv "${VERSIONED_DIR}/addons" ./
+          rm -rf "${VERSIONED_DIR}"
+
+      - name: Get latest release from kus/CS2-Remove-Map-Weapons
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/kus/CS2-Remove-Map-Weapons/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2-Remove-Map-Weapons-.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/server_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/kus/CS2-Remove-Map-Weapons/releases/download/$(curl -s https://api.github.com/repos/kus/CS2-Remove-Map-Weapons/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get latest release from NockyCZ/CS2-Deathmatch
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/NockyCZ/CS2-Deathmatch/releases/latest | jq -r ".assets[] | select(.name | test(\"Deathmatch.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/server_files/game/csgo/addons/counterstrikesharp/
+          curl -L -o "${FILE_NAME}" "https://github.com/NockyCZ/CS2-Deathmatch/releases/download/$(curl -s https://api.github.com/repos/NockyCZ/CS2-Deathmatch/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get and extract MMS source tar file
+        run: |
+          MMS_URL="https://mms.alliedmods.net/mmsdrop/2.0/mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
+          echo "Downloading MMS source from ${MMS_URL}"
+          cd $GITHUB_WORKSPACE/server_files/game/csgo/
+          curl -L -o "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz" "${MMS_URL}"
+          tar -xvzf "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
+
+      - name: Zip the server_files directory
+        run: |
+          cd $GITHUB_WORKSPACE
+          zip -r package.zip server_files/
+
+      - name: Get the latest git tag
+        id: get_version
+        run: |
+          # Get the latest tag and store it as the version
+          VERSION=$(git describe --tags --abbrev=0)
+          echo "Latest tag: ${VERSION}"
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Create a new release on GitHub
+        uses: ghcli/release-create@v1.0.0
+        with:
+          tag_name: "${{ env.VERSION }}"
+          release_name: "Release ${{ env.VERSION }}"
+          body: "Automated release package"
+          files: "package.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
