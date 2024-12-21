@@ -88,4 +88,5 @@ jobs:
         uses: softprops/action-gh-release@v2.2.0
         with:
           files: "package.zip"
-          tag_name: ${{steps.get_next_tag.outputs.NEXT_TAG}}
+          token: ${{ secrets.TOKEN }}
+          tag_name: "v${{steps.get_next_tag.outputs.NEXT_TAG}}"
