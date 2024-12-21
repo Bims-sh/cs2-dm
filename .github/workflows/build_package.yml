@@ -39,7 +39,7 @@ jobs:
           rm "${FILE_NAME}"
 
           VERSIONED_DIR=$(ls -d CS2Rcon-* | head -n 1)
-          mv "${VERSIONED_DIR}/addons" ./
+          cp -r "${VERSIONED_DIR}/addons" ./
           rm -rf "${VERSIONED_DIR}"
 
       - name: Get latest release from kus/CS2-Remove-Map-Weapons
