@@ -73,13 +73,13 @@ jobs:
           cd $GITHUB_WORKSPACE/server_files
           tar -czvf package.tar.gz ./*
 
-
       - name: Get tag
         id: tag
-        uses: devops-actions/action-get-tag@v1.0.3
-        with:
-          strip_v: true
-          default: v1.0.0
+        run: |
+          latest_tag=$(curl --silent \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/tags" | jq -r '.[0].name')
+          echo "Latest tag is: $latest_tag"
 
       - name: 'Get next minor version'
         id: semvers
@@ -92,4 +92,4 @@ jobs:
         with:
           files: "server_files/package.tar.gz"
           token: ${{ secrets.TOKEN }}
-          tag_name: "v${{ steps.semvers.outputs.patch }}"
+          tag_name: "${{ steps.semvers.outputs.v_patch }}"
