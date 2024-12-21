@@ -89,6 +89,6 @@ jobs:
       - name: GH Release
         uses: softprops/action-gh-release@v2.1.0
         with:
-          files: "package.tar.gz"
+          files: "server_files/package.tar.gz"
           token: ${{ secrets.TOKEN }}
-          tag_name: "${{ steps.semvers.outputs.patch }}"
+          tag_name: "v${{ steps.semvers.outputs.patch }}"
