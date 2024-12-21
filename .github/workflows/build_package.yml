@@ -71,7 +71,7 @@ jobs:
       - name: Tar the server_files directory
         run: |
           cd $GITHUB_WORKSPACE
-          tar -cvf package.tar.gz server_files/
+          tar -czvf package.tar.gz server_files/
 
       - name: 'Get Previous tag'
         id: previoustag
