@@ -1,0 +1,13 @@
+{
+    "Bims": {
+      "identity": "76561198395073327",
+      "immunity": 100,
+      "groups": [
+        "#css/admin"
+      ],
+      "command_overrides": {
+        "css_plugins": true,
+        "css": true
+      }
+    }
+}

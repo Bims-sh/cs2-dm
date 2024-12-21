@@ -1,0 +1,117 @@
+{
+    "Save Players Weapons": false,
+    "Database Connection": {
+        "Host": "",
+        "Port": 3306,
+        "User": "",
+        "Database": "",
+        "Password": ""
+    },
+    "Gameplay Settings": {
+        "Free For All": true,
+        "Custom Modes": false,
+        "Random Selection Of Modes": false,
+        "Map Start Custom Mode": 0,
+        "New Mode Countdown": 10,
+        "Hud Type": 1,
+        "Check Enemies Distance": true,
+        "Distance From Enemies for Respawn": 575,
+        "Default Weapons": 1,
+        "Include Restricted Weapons As Defaults": true,
+        "Switch Weapons": true,
+        "Allow Buymenu": true,
+        "Use Default Spawns": false,
+        "Respawn Players After New Mode": false,
+        "Spawn Protection Color": "#FFFFFF"
+    },
+    "General Settings": {
+        "Hide Round Seconds": true,
+        "Hide New Mode Countdown": true,
+        "Block Radio Messages": true,
+        "Block Player Ping": true,
+        "Block Player ChatWheel": true,
+        "Remove Breakable Entities": true,
+        "Remove Decals After Death": true,
+        "Force Map End": false
+    },
+    "Sounds Settings": {
+        "Weapon Cant Equip Sound": "sounds/ui/weapon_cant_buy.vsnd_c",
+        "New Mode Sound": "sounds/music/3kliksphilip_01/bombtenseccount.vsnd_c"
+    },
+    "Custom Commands": {
+        "Deatmatch Menu Commands": "dm,deathmatch",
+        "Weapons Select Commands": "gun,weapon,w,g",
+        "Weapons Select Shortcuts": "weapon_ak47:ak,weapon_deagle:deagle"
+    },
+    "Players Gameplay Settings": {
+        "VIP Flag": "@css/vip",
+        "Non VIP Players": {
+            "Respawn Time": 0.75,
+            "Spawn Protection Time": 1,
+            "Reffil Ammo Kill": true,
+            "Reffil Ammo Headshot": false,
+            "Reffil Ammo in All Weapons": false,
+            "Reffil Health Kill": 40,
+            "Reffil Health Headshot": 10
+        }
+    },
+    "Client Preferences": {
+        "Kill Sound": {
+            "Enabled": true,
+            "Sound path": "sounds/ui/armsrace_kill_01.vsnd_c",
+            "Default value": false,
+            "Only for VIP": false
+        },
+        "Headshot Kill Sound": {
+            "Enabled": true,
+            "Sound path": "sounds/buttons/bell1.vsnd_c",
+            "Default value": false,
+            "Only for VIP": false
+        },
+        "Knife Kill Sound": {
+            "Enabled": true,
+            "Sound path": "sounds/ui/armsrace_final_kill_knife.vsnd_c",
+            "Default value": false,
+            "Only for VIP": false
+        },
+        "Hit Sound": {
+            "Enabled": true,
+            "Sound path": "sounds/ui/csgo_ui_contract_type2.vsnd_c",
+            "Default value": false,
+            "Only for VIP": false
+        },
+        "Only Headshot": {
+            "Enabled": false,
+            "Default value": false,
+            "Only for VIP": false
+        },
+        "Hud Messages": {
+            "Enabled": false,
+            "Default value": true,
+            "Only for VIP": false
+        }
+    },
+    "Custom Modes": {
+        "0": {
+            "Name": "Default",
+            "Interval": 300,
+            "Armor": 2,
+            "OnlyHS": false,
+            "KnifeDamage": true,
+            "RandomWeapons": false,
+            "CenterMessageText": "",
+            "PrimaryWeapons": [
+                "weapon_ak47"
+            ],
+            "SecondaryWeapons": [
+                "weapon_deagle"
+            ],
+            "ExecuteCommands": []
+        }
+    },
+    "Weapons Restrict": {
+        "Global Restrict": false,
+        "Weapons": {}
+    },
+    "ConfigVersion": 1
+}

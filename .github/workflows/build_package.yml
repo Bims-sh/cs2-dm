@@ -17,6 +17,7 @@ jobs:
       - name: Set MMS version variable
         id: mms_version
         run: |
+          mkdir -p package_files/game/csgo
           echo "MMS_VERSION=1315" >> $GITHUB_ENV
           echo "MMS_VERSION=${{ env.MMS_VERSION }}"
 
@@ -24,7 +25,7 @@ jobs:
         run: |
           FILE_NAME=$(curl -s https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest | jq -r ".assets[] | select(.name | test(\"counterstrikesharp-with-runtime-build.*-linux.*\")) | .name")
           echo "Downloading ${FILE_NAME}"
-          cd $GITHUB_WORKSPACE/server_files/game/csgo/
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
           curl -L -o "${FILE_NAME}" "https://github.com/roflmuffin/CounterStrikeSharp/releases/download/$(curl -s https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest | jq -r .tag_name)/${FILE_NAME}"
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
@@ -33,7 +34,7 @@ jobs:
         run: |
           FILE_NAME=$(curl -s https://api.github.com/repos/LordFetznschaedl/CS2Rcon/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2Rcon-.*\")) | .name")
           echo "Downloading ${FILE_NAME}"
-          cd $GITHUB_WORKSPACE/server_files/game/csgo/
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
           curl -L -o "${FILE_NAME}" "https://github.com/LordFetznschaedl/CS2Rcon/releases/download/$(curl -s https://api.github.com/repos/LordFetznschaedl/CS2Rcon/releases/latest | jq -r .tag_name)/${FILE_NAME}"
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
@@ -46,7 +47,7 @@ jobs:
         run: |
           FILE_NAME=$(curl -s https://api.github.com/repos/kus/CS2-Remove-Map-Weapons/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2-Remove-Map-Weapons-.*\")) | .name")
           echo "Downloading ${FILE_NAME}"
-          cd $GITHUB_WORKSPACE/server_files/game/csgo/
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
           curl -L -o "${FILE_NAME}" "https://github.com/kus/CS2-Remove-Map-Weapons/releases/download/$(curl -s https://api.github.com/repos/kus/CS2-Remove-Map-Weapons/releases/latest | jq -r .tag_name)/${FILE_NAME}"
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
@@ -55,7 +56,7 @@ jobs:
         run: |
           FILE_NAME=$(curl -s https://api.github.com/repos/NockyCZ/CS2-Deathmatch/releases/latest | jq -r ".assets[] | select(.name | test(\"Deathmatch.*\")) | .name")
           echo "Downloading ${FILE_NAME}"
-          cd $GITHUB_WORKSPACE/server_files/game/csgo/addons/counterstrikesharp/
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/addons/counterstrikesharp/
           curl -L -o "${FILE_NAME}" "https://github.com/NockyCZ/CS2-Deathmatch/releases/download/$(curl -s https://api.github.com/repos/NockyCZ/CS2-Deathmatch/releases/latest | jq -r .tag_name)/${FILE_NAME}"
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
@@ -64,21 +65,25 @@ jobs:
         run: |
           MMS_URL="https://mms.alliedmods.net/mmsdrop/2.0/mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
           echo "Downloading MMS source from ${MMS_URL}"
-          cd $GITHUB_WORKSPACE/server_files/game/csgo/
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
           curl -L -o "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz" "${MMS_URL}"
           tar -xvzf "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
 
       - name: Download latest acmrs.sh version
         run: |
           echo "Downloading acmrs.sh"
-          cd $GITHUB_WORKSPACE/server_files/game/
+          cd $GITHUB_WORKSPACE/package_files/game/
           curl -L -O https://raw.githubusercontent.com/ghostcap-gaming/ACMRS-cs2-metamod-update-fix/refs/heads/main/acmrs.sh
           sed -i 's|/home/container/game/csgo|/home/steam/cs2-dedicated/game/csgo|' acmrs.sh
           chmod +x acmrs.sh
 
-      - name: Tar the server_files directory
+      - name: Copy the server_files directory into the package_files directory
         run: |
-          cd $GITHUB_WORKSPACE/server_files
+          cp -r server_files/game package_files
+
+      - name: Tar the package_files directory
+        run: |
+          cd $GITHUB_WORKSPACE/package_files
           tar cvzf package.tar.gz ./*
 
       - name: Get tag
