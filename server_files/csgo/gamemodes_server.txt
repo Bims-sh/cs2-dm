@@ -1,0 +1,36 @@
+"Gamemodes_Server.txt"
+{
+    "gameTypes"
+    {
+        "classic"
+        {
+            "gameModes"
+            {
+                "deathmatch"
+                {
+                    "maxplayers" "24"
+                    "exec"
+                    {
+                        "exec" "deathmatch.cfg"
+                    }
+                    "mapgroupsMP"
+                    {
+                        "mg_dm" ""
+                    }
+                }
+            }
+        }
+    }
+    "mapgroups"
+    {
+        "mg_dm"
+        {
+            "name" "mg_dm"
+            "displayname" "Deathmatch"
+            "maps"
+            {
+                "de_mirage" ""
+            }
+        }
+    }
+}
