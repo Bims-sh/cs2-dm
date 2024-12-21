@@ -13,8 +13,9 @@ services:
       - CS2_MAXPLAYERS=24            # (Max players)
       - CS2_PW                       # (CS2 server password)
       - CS2_CFG_URL=https://github.com/Bims-sh/cs2-dm/releases/latest/download/package.tar.gz
+      - CS2_ADDITIONAL_ARGS=+exec deathmatch.cfg
       # Game modes
-      - CS2_GAMEALIAS=deathmatch     # (Game type, e.g. casual, competitive, deathmatch. See https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers)
+      - CS2_GAMEALIAS=custom     # (Game type, e.g. casual, competitive, deathmatch. See https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers)
       - CS2_GAMETYPE=0               # (Used if CS2_GAMEALIAS not defined. See https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers)
       - CS2_GAMEMODE=0               # (Used if CS2_GAMEALIAS not defined. See https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers)
       - CS2_MAPGROUP=mg_dm           # (Map pool. Ignored if Workshop maps are defined.)
