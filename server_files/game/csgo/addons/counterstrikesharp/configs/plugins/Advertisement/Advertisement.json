@@ -1,8 +1,10 @@
 {
     "PrintToCenterHtml": true,
+    "HtmlCenterDuration": 5,
     "WelcomeMessage": {
         "MessageType": 2,
-        "Message": "<img src='https://media1.tenor.com/m/0XFWmg3yjd8AAAAd/peaceemote-peace.gif'>"
+        "Message": "{BLUE}hi {GREEN}{PLAYERNAME} {BLUE}:3<br /><img src=\"https://media1.tenor.com/m/0XFWmg3yjd8AAAAd/peaceemote-peace.gif\">",
+        "DisplayDelay": 5
     },
     "Ads": [],
     "Panel": [],
