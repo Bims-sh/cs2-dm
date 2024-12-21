@@ -91,5 +91,5 @@ jobs:
         uses: softprops/action-gh-release@v2.1.0
         with:
           files: "server_files/package.tar.gz"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN }}
           tag_name: "${{ env.TAG }}"
