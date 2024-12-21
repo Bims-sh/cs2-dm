@@ -77,6 +77,7 @@ jobs:
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
+          tag-prefix: "v"
           fallback: 1.0.0
 
       - name: 'Get next minor version'
