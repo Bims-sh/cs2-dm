@@ -92,7 +92,7 @@ jobs:
           echo "Downloading acmrs.sh"
           cd $GITHUB_WORKSPACE/package_files/game/
           curl -L -O https://raw.githubusercontent.com/ghostcap-gaming/ACMRS-cs2-metamod-update-fix/refs/heads/main/acmrs.sh
-          sed -i 's|/home/container/game/csgo|/home/steam/cs2-dedicated/game/csgo|' acmrs.sh
+          sed -i 's#/home/container/game/csgo#/home/steam/cs2-dedicated/game/csgo#' acmrs.sh
           chmod +x acmrs.sh
 
       - name: Copy the server_files directory into the package_files directory
