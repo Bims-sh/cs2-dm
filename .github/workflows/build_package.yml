@@ -85,11 +85,11 @@ jobs:
             latest_tag=$((latest_tag + 1))
           fi
           echo "Latest tag is: $latest_tag"
-          echo "tag=$latest_tag" >> $GITHUB_ENV
+          echo "TAG=$latest_tag" >> $GITHUB_ENV
 
       - name: GH Release
         uses: softprops/action-gh-release@v2.1.0
         with:
           files: "server_files/package.tar.gz"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: "${{ steps.tag.outputs.tag }}"
+          tag_name: "${{ env.TAG }}"
