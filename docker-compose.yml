@@ -41,9 +41,12 @@ services:
       MYSQL_DATABASE: cs2dm
       MYSQL_PASSWORD: itslocalanywaylol
     volumes:
-      - db_data:/var/lib/mysql
+      - cs2-deathmatch_data:/var/lib/mysql
     networks:
       - cs2-deathmatch
+
+volumes:
+  cs2-deathmatch_data:
 
 networks:
   cs2-deathmatch:
