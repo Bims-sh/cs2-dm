@@ -71,9 +71,9 @@ jobs:
       - name: Tar the server_files directory
         run: |
           cd $GITHUB_WORKSPACE
-          tar -czf package.tar.gz server_files/
+          tar xvf package.tar.gz server_files/
 
-      - name: 'Get Previous tag'
+      - name: Get previous tag
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
