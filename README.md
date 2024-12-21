@@ -31,4 +31,5 @@ docker compose up -d
 - [Source2ZE/ServerListPlayersFix](https://github.com/Source2ZE/ServerListPlayersFix)
 - [partiusfabaa/cs2-advertisement](https://github.com/partiusfabaa/cs2-advertisement)
 - [kus/cs2-modded-server](https://github.com/kus/cs2-modded-server)
+- [kus/CS2_ExecAfter](https://github.com/kus/CS2_ExecAfter)
 - [ghostcap-gaming/ACMRS-cs2-metamod-update-fix](https://github.com/ghostcap-gaming/ACMRS-cs2-metamod-update-fix)

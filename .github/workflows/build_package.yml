@@ -79,6 +79,15 @@ jobs:
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
 
+      - name: Get latest release from kus/CS2_ExecAfter
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/kus/CS2_ExecAfter/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2_ExecAfter.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/kus/CS2_ExecAfter/releases/download/$(curl -s https://api.github.com/repos/kus/CS2_ExecAfter/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
       - name: Get and extract MMS source tar file
         run: |
           MMS_URL="https://mms.alliedmods.net/mmsdrop/2.0/mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
