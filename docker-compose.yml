@@ -7,7 +7,7 @@ services:
     environment:
       # Server configuration
       - STEAMAPPVALIDATE=0           # (0 - no validation, 1 - enable validation)
-      - CS2_SERVERNAME='CS2 DM | FFA (Mirage) — bims.sh (24 Players)'
+      - CS2_SERVERNAME=CS2 DM | FFA (Mirage) — bims.sh (24 Players)
       - CS2_PORT=27015               # (CS2 server listen port tcp_udp)
       - CS2_LAN=0                    # (0 - LAN mode disabled, 1 - LAN Mode enabled)
       - CS2_MAXPLAYERS=24            # (Max players)
