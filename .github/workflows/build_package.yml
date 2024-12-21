@@ -73,7 +73,19 @@ jobs:
           cd $GITHUB_WORKSPACE
           zip -r package.zip server_files/
 
+      - name: Get next tag
+        run: |
+          LAST_TAG=${{ steps.previoustag.outputs.tag }}
+          NEXT_NUMBER=$((LAST_TAG % 100))
+
+          if [ $NEXT_NUMBER -eq 1 ]; then
+            NEXT_TAG=$LAST_TAG
+          else
+            NEXT_TAG=$((LAST_TAG + 1))
+          fi
+
       - name: GH Release
         uses: softprops/action-gh-release@v2.2.0
         with:
           files: "package.zip"
+          tag_name: ${{steps.get_next_tag.outputs.NEXT_TAG}}
