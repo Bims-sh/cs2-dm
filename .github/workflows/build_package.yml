@@ -70,8 +70,8 @@ jobs:
 
       - name: Tar the server_files directory
         run: |
-          cd $GITHUB_WORKSPACE
-          tar -czvf package.tar.gz server_files/
+          cd $GITHUB_WORKSPACE/server_files
+          tar -czvf package.tar.gz ./*
 
       - name: 'Get Previous tag'
         id: previoustag
