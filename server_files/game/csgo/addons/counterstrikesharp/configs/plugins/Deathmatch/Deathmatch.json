@@ -49,8 +49,8 @@
             "Respawn Time": 0.75,
             "Spawn Protection Time": 1,
             "Reffil Ammo Kill": true,
-            "Reffil Ammo Headshot": false,
-            "Reffil Ammo in All Weapons": false,
+            "Reffil Ammo Headshot": true,
+            "Reffil Ammo in All Weapons": true,
             "Reffil Health Kill": 40,
             "Reffil Health Headshot": 10
         },
