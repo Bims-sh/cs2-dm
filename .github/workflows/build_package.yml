@@ -68,6 +68,14 @@ jobs:
           curl -L -o "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz" "${MMS_URL}"
           tar -xvzf "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
 
+      - name: Download latest acmrs.sh version
+        run: |
+          echo "Downloading acmrs.sh"
+          cd $GITHUB_WORKSPACE/server_files/game/
+          curl -L -O https://raw.githubusercontent.com/ghostcap-gaming/ACMRS-cs2-metamod-update-fix/refs/heads/main/acmrs.sh
+          sed -i 's|/home/container/game/csgo|/home/steam/cs2-dedicated/game/csgo|'
+          chmod +x acmrs.sh
+
       - name: Tar the server_files directory
         run: |
           cd $GITHUB_WORKSPACE/server_files
