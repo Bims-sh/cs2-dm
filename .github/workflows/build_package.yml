@@ -68,10 +68,10 @@ jobs:
           curl -L -o "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz" "${MMS_URL}"
           tar -xvzf "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
 
-      - name: Zip the server_files directory
+      - name: Tar the server_files directory
         run: |
           cd $GITHUB_WORKSPACE
-          zip -r package.zip server_files/
+          tar -czf package.tar.gz server_files/
 
       - name: Get next tag
         id: get_next_tag
@@ -91,6 +91,6 @@ jobs:
       - name: GH Release
         uses: softprops/action-gh-release@v2.1.0
         with:
-          files: "package.zip"
+          files: "package.tar.gz"
           token: ${{ secrets.TOKEN }}
           tag_name: "v${{steps.get_next_tag.outputs.NEXT_TAG}}"
