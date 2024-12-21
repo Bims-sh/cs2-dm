@@ -4,5 +4,9 @@
         "MessageType": 2,
         "Message": "<img src='https://media1.tenor.com/m/0XFWmg3yjd8AAAAd/peaceemote-peace.gif'>"
     },
-    "DefaultLang": "US"
+    "Ads": [],
+    "Panel": [],
+    "DefaultLang": "US",
+    "LanguageMessages": {},
+    "MapsName": {}
 }
