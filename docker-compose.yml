@@ -31,3 +31,19 @@ services:
     ports:
       - "27015:27015/tcp"
       - "27015:27015/udp"
+    networks:
+      - cs2-deathmatch
+  mysql:
+    image: mysql:8.0
+    container_name: cs2-deathmatch-database
+    environment:
+      MYSQL_USER: mysql
+      MYSQL_DATABASE: cs2dm
+      MYSQL_PASSWORD: itslocalanywaylol
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - cs2-deathmatch
+
+networks:
+  cs2-deathmatch:

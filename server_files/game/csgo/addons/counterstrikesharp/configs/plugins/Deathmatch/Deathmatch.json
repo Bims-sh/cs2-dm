@@ -1,11 +1,11 @@
 {
     "Save Players Weapons": false,
     "Database Connection": {
-        "Host": "",
+        "Host": "database",
         "Port": 3306,
-        "User": "",
-        "Database": "",
-        "Password": ""
+        "User": "mysql",
+        "Database": "cs2-deathmatch-database",
+        "Password": "itslocalanywaylol"
     },
     "Gameplay Settings": {
         "Free For All": true,
@@ -19,7 +19,7 @@
         "Default Weapons": 1,
         "Include Restricted Weapons As Defaults": true,
         "Switch Weapons": true,
-        "Allow Buymenu": true,
+        "Allow Buymenu": false,
         "Use Default Spawns": false,
         "Respawn Players After New Mode": false,
         "Spawn Protection Color": "#FFFFFF"
