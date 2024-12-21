@@ -3,8 +3,8 @@
     "HtmlCenterDuration": 5,
     "WelcomeMessage": {
         "MessageType": 2,
-        "Message": "{BLUE}hiii {GREEN}{PLAYERNAME} {BLUE}:3<br /><img src=\"https://raw.githubusercontent.com/Bims-sh/cs2-dm/refs/heads/master/assets/peace.png\">",
-        "DisplayDelay": 5
+        "Message": "{BLUE}hiii {GREEN}{PLAYERNAME} {BLUE}:3<br /><img src=\"https://raw.githubusercontent.com/Bims-sh/cs2-dm/refs/heads/master/assets/peace.png\"><br />",
+        "DisplayDelay": 8
     },
     "Ads": [],
     "Panel": [],
