@@ -100,7 +100,31 @@
             "Only for VIP": false
         }
     },
-    "Custom Modes": {},
+    "Custom Modes": {
+        "0": {
+            "Name": "Default",
+            "Interval": 300,
+            "Armor": 2,
+            "OnlyHS": false,
+            "KnifeDamage": true,
+            "RandomWeapons": false,
+            "CenterMessageText": "",
+            "PrimaryWeapons": [
+                "weapon_ak47"
+            ],
+            "SecondaryWeapons": [
+                "weapon_deagle"
+            ],
+            "ExecuteCommands": [
+                "bot_allow_grenades 1",
+                "bot_allow_shotguns 1",
+                "bot_allow_pistols 1",
+                "bot_allow_rifles 1",
+                "bot_allow_snipers 1",
+                "bot_allow_machine_guns 1"
+            ]
+        }
+    },
     "Weapons Restrict": {
         "Global Restrict": false,
         "Weapons": {}
