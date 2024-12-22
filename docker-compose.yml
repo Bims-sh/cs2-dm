@@ -20,10 +20,6 @@ services:
       - CS2_GAMEMODE=0               # (Used if CS2_GAMEALIAS not defined. See https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers)
       - CS2_MAPGROUP=mg_dm           # (Map pool. Ignored if Workshop maps are defined.)
       - CS2_STARTMAP=de_mirage       # (Start map. Ignored if Workshop maps are defined.)
-      # Bots
-      - CS2_BOT_DIFFICULTY           # (0 - easy, 1 - normal, 2 - hard, 3 - expert)
-      - CS2_BOT_QUOTA=10              # (Number of bots)
-      - CS2_BOT_QUOTA_MODE=fill      # (fill, competitive)
       # Logs
       - CS2_LOG=on                   # 'on'/'off'
     env_file: ".env"
