@@ -9,7 +9,7 @@
     },
     "Gameplay Settings": {
         "Free For All": true,
-        "Custom Modes": false,
+        "Custom Modes": true,
         "Random Selection Of Modes": false,
         "Map Start Custom Mode": 0,
         "New Mode Countdown": 10,
@@ -115,7 +115,14 @@
             "SecondaryWeapons": [
                 "weapon_deagle"
             ],
-            "ExecuteCommands": []
+            "ExecuteCommands": [
+                "bot_allow_grenades 1",
+                "bot_allow_shotguns 1",
+                "bot_allow_pistols 1",
+                "bot_allow_rifles 1",
+                "bot_allow_snipers 1",
+                "bot_allow_machine_guns 1"
+            ]
         }
     },
     "Weapons Restrict": {
