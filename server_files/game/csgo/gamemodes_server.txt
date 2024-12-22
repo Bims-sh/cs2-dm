@@ -11,7 +11,7 @@
                     "maxplayers" "24"
                     "exec"
                     {
-                        "exec" "gamemode_deathmatch_last.cfg"
+                        "exec" "deathmatch.cfg"
                     }
                     "mapgroupsMP"
                     {
