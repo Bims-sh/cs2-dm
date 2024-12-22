@@ -8,7 +8,7 @@
             {
                 "deathmatch"
                 {
-                    "maxplayers" "24"
+                    "maxplayers" "32"
                     "exec"
                     {
                         "exec" "deathmatch.cfg"
