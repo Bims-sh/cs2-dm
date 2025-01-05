@@ -7,6 +7,7 @@ services:
     environment:
       # Server configuration
       - STEAMAPPVALIDATE=1           # (0 - no validation, 1 - enable validation)
+      - CS2_SERVER_HIBERNATE=0       # (Put server in a low CPU state when there are no players.
       - CS2_SERVERNAME=CS2 DM | FFA (Mirage) — bims.sh (32 Players)
       - CS2_PORT=27015               # (CS2 server listen port tcp_udp)
       - CS2_LAN=0                    # (0 - LAN mode disabled, 1 - LAN Mode enabled)
